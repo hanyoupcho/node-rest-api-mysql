@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const compression = require('compression');
 const logger = require('./logger.js');
 
 module.exports = app => {
@@ -20,6 +21,7 @@ module.exports = app => {
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
   }));
+  app.use(compression());
   app.use(bodyParser.json());
   app.use(app.auth.initialize());
   app.use((req, res, next) => {

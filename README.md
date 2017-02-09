@@ -3,17 +3,32 @@
 Node.js REST API with MySQL
 
 ## Multithreads
+Packages
+  * cluster - The cluster module allows you to easily create child processes that all share server ports.
+  * os - (Optional) module to get the number of cpus
+
 clusters.js
 
+package.json
 ```json
 "scripts": {
   "clusters": "babel-node clusters.js"
 },
 ```
 
+Run
 ```bash
 $ npm run clusters
 ```
+
+## Network
+Packages
+  * [compression](https://github.com/expressjs/compression) - Node.js compression middleware
+
+  lib/middlewares.js
+  ```js
+  app.use(compression());
+  ```
 
 
 ## Security
