@@ -1,9 +1,9 @@
 /*jshint esversion: 6 */
-import bodyParser from 'body-parser';
-import express from 'express';
-import morgan from 'morgan';
-import cors from 'cors';
-import logger from './logger.js';
+const bodyParser = require('body-parser');
+const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
+const logger = require('./logger.js');
 
 module.exports = app => {
   app.set('port', 3000);

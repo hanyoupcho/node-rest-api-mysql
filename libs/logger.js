@@ -1,5 +1,6 @@
-import fs from 'fs';
-import winston from 'winston';
+/*jshint esversion: 6 */
+const fs = require('fs');
+const winston = require('winston');
 
 if (!fs.existsSync('logs')) {
   fs.mkdirSync('logs');

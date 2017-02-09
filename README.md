@@ -2,6 +2,20 @@
 
 Node.js REST API with MySQL
 
+## Multithreads
+clusters.js
+
+```json
+"scripts": {
+  "clusters": "babel-node clusters.js"
+},
+```
+
+```bash
+$ npm run clusters
+```
+
+
 ## Security
 Packages
   * [cors](https://github.com/expressjs/cors) - A node.js package that provides an Express/Connect middleware to enable Cross Origin Resource Sharing (CORS) with various options.

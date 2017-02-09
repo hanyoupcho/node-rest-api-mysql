@@ -5,7 +5,7 @@ const consign = require('consign');
 const app = express();
 
 consign({
-    verbose: true
+    verbose: false
   })
   .include('libs/config.js')
   .then('db.js')

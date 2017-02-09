@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-import logger from './logger.js';
+const logger = require('./logger.js');
 
 module.exports = {
   database: 'ntask',
