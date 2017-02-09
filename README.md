@@ -1,106 +1,60 @@
-# NaughtyRestAPI
+# Node.js REST API
 
-Node.js REST API with MySQL
+REST API for Guideline iOS and Android App
 
-## Multithreads
-Packages
+
+## Performance
+
+### cluster
+
+Package(s)
   * cluster - The cluster module allows you to easily create child processes that all share server ports.
   * os - (Optional) module to get the number of cpus
 
 clusters.js
-
 package.json
-```json
-"scripts": {
-  "clusters": "babel-node clusters.js"
-},
-```
-
-Run
-```bash
-$ npm run clusters
-```
-
-## Network
-Packages
-  * [compression](https://github.com/expressjs/compression) - Node.js compression middleware
-  * https - HTTP protocol over TLS/SSL
 
 ### compression
+
+Package(s)
+  * [compression](https://github.com/expressjs/compression) - Node.js compression middleware
+
 lib/middlewares.js
-```js
-app.use(compression());
-```
 
-### https
+
+## Security
+
+### HTTPS
+
+Package(s)
+  * https - HTTP protocol over TLS/SSL
+
 libs/boot.js
-```js
-const https = require('https');
-const fs = require('fs');
-
-const credentials = {
-  key: fs.readFileSync('./certs/www.example.com.key', 'utf8'),
-  cert: fs.readFileSync('./certs/www.example.com.cert', 'utf8')
-};
-app.db.sequelize.sync().done(() => {
-  https.createServer(credentials, app)
-    .listen(app.get('port'), () => {
-      console.log(`Server is running on ${app.get('port')}`);
-    });
-});
-```
 
 To create fake credentials,
 [Self-Signed Certificate Generator](http://www.selfsignedcertificate.com)
 
-## Security
-Packages
+### cors
+
+Package(s)
   * [cors](https://github.com/expressjs/cors) - A node.js package that provides an Express/Connect middleware to enable Cross Origin Resource Sharing (CORS) with various options.
     * [Access Control Documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
 
 libs/middlewares.js
-```js
-app.use(cors({
-  origin: ['http://localhost:3001'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-```
+
+### helmet
+
+Package(s)
+  * [helmet](https://github.com/helmetjs/helmet) - Help secure Express apps with various HTTP headers
+
+libs/middlewares.js
+
 
 ## Logging
-Packages
+Package(s)
   * [winston](https://github.com/winstonjs/winston) - a multi-transport async logging library for node.js
   * [morgan](https://github.com/expressjs/morgan) - HTTP request logger middleware for node.js
 
 libs/logger.js
-```js
-module.exports = new winston.Logger({
-  transports: [
-    new winston.transports.File({
-      level: 'info',
-      filename: 'logs/app.log',
-      maxSize: 1048576,
-      maxFiles: 10,
-      colorize: false
-    })
-  ]
-});
-```
-
 libs/config.?.js
-```js
-logging: (sql) => {
-  logger.info(`[${new Date()}] ${sql}`);
-},
-```
-
 libs/middlewares.js
-```js
-app.use(morgan('common', {
-  stream: {
-    write: (message) => {
-      logger.info(message);
-    }
-  }
-}));
-```
