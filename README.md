@@ -24,12 +24,34 @@ $ npm run clusters
 ## Network
 Packages
   * [compression](https://github.com/expressjs/compression) - Node.js compression middleware
+  * https - HTTP protocol over TLS/SSL
 
-  lib/middlewares.js
-  ```js
-  app.use(compression());
-  ```
+### compression
+lib/middlewares.js
+```js
+app.use(compression());
+```
 
+### https
+libs/boot.js
+```js
+const https = require('https');
+const fs = require('fs');
+
+const credentials = {
+  key: fs.readFileSync('./certs/www.example.com.key', 'utf8'),
+  cert: fs.readFileSync('./certs/www.example.com.cert', 'utf8')
+};
+app.db.sequelize.sync().done(() => {
+  https.createServer(credentials, app)
+    .listen(app.get('port'), () => {
+      console.log(`Server is running on ${app.get('port')}`);
+    });
+});
+```
+
+To create fake credentials,
+[Self-Signed Certificate Generator](http://www.selfsignedcertificate.com)
 
 ## Security
 Packages

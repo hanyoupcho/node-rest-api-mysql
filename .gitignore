@@ -1,3 +1,5 @@
 node_modules/
 logs/
+certs/
 *.log
+.DS_Store
