@@ -3,7 +3,6 @@ module.exports = app => {
   const Tasks = app.db.models.Tasks;
   app.route('/tasks')
     .all(app.auth.authenticate())
-
     .post((req, res) => {
       req.body.user_id = req.user.id;
       Tasks.create(req.body)

@@ -16,7 +16,6 @@ if (cluster.isMaster) {
   cluster.on('exit', worker => {
     console.log('Cluster %d is dead', worker.process.pid);
     cluster.fork();
-    // Ensure starts of a new cluster if an old one dies
   });
 } else {
   require('./index.js');
