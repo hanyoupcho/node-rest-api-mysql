@@ -3,6 +3,42 @@
 REST API for Guideline iOS and Android App
 
 
+## Core
+### express
+Package(s)
+  * [express](https://github.com/expressjs/express) - Fast, unopinionated, minimalist web framework
+
+Implemented in
+  * index.js
+  * routes/?.js
+  * libs/boot.js
+  * libs/config.js
+  * libs/middlewares.js
+
+```js
+var express = require('express')
+var app = express()
+
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+
+app.listen(3000)
+```
+
+### Babel
+
+To use all features from ES6/ES7
+
+Pckages(s)
+  * [babel-cli](https://github.com/babel/babel/tree/master/packages/babel-cli)
+  * [babel-preset-es2015](https://www.npmjs.com/package/babel-preset-es2015)
+
+Implemented in
+  * .babelrc
+  * package.json
+
+
 ## Performance
 ### cluster
 Package(s)
@@ -57,3 +93,5 @@ Implemented in
   * libs/logger.js
   * libs/config.?.js
   * libs/middlewares.js
+
+The module creates app.log in /logs

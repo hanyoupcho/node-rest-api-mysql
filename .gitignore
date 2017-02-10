@@ -3,3 +3,5 @@ logs/
 certs/
 *.log
 .DS_Store
+ntask.sqlite
+public/apidoc/*
