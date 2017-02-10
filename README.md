@@ -5,6 +5,8 @@ REST API for Guideline iOS and Android App
 
 ## Core
 ### express
+Express provides small, robust tooling for HTTP servers, making it a great solution for single page applications, web sites, hybrids, or public HTTP APIs.
+
 Package(s)
   * [express](https://github.com/expressjs/express) - Fast, unopinionated, minimalist web framework
 
@@ -15,6 +17,7 @@ Implemented in
   * libs/config.js
   * libs/middlewares.js
 
+Usage Example
 ```js
 var express = require('express')
 var app = express()
@@ -24,6 +27,25 @@ app.get('/', function (req, res) {
 })
 
 app.listen(3000)
+```
+
+### body-parser
+Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
+
+Package(s)
+  * [body-parser](https://github.com/expressjs/body-parser) - Node.js body parsing middleware
+
+Implemented in
+  * libs/middlewares.js -
+  * routes/?.js
+
+Usage Example
+```js
+app.get('/', (req, res) => {
+  res.json({
+    status: "NaughtyRestAPI"
+  });
+});
 ```
 
 ### Babel
@@ -38,6 +60,39 @@ Implemented in
   * .babelrc
   * package.json
 
+### consign
+Package(s)
+  * [consign](https://github.com/jarradseers/consign) - Autoload your scripts.
+
+Implemented in
+  * index.js
+
+Usage Example
+```bash
+$ babel-node index.js
+```
+
+
+## Database
+### Sequelize.js
+Package(s)
+  * [sequelize](https://github.com/sequelize/sequelize) - Sequelize is a promise-based Node.js ORM for Postgres, MySQL, SQLite and Microsoft SQL Server. It features solid transaction support, relations, read replication and more.
+    * [Docs](http://docs.sequelizejs.com/en/v3/)
+
+Implemented in
+  * db.js - Basic Setup
+  * config.?.js - Database config
+  * models/?.js - Database models
+  * libs/boot.js - Module initialization
+
+### MySQL
+Package(s)
+  * [mysql](https://github.com/mysqljs/mysql) - A pure node.js JavaScript Client implementing the MySql protocol
+
+Implemented in
+  * /libs/config.?.js
+
+### MongoDB
 
 ## Performance
 ### cluster
